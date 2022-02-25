@@ -7,6 +7,10 @@ interface ReportData {
   amount: number;
   source: string;
 }
+interface UpdateReportData {
+  amount?: number;
+  source?: string;
+}
 @Injectable()
 export class AppService {
   getAllReports(type: ReportType) {
@@ -32,7 +36,11 @@ export class AppService {
     return newReport;
   }
 
-  updateReport(type: ReportType, id: string, { amount, source }: ReportData) {
+  updateReport(
+    type: ReportType,
+    id: string,
+    { amount, source }: UpdateReportData,
+  ) {
     const reportToUpdate = data.reports
       .filter((report) => report.type === type)
       .find((r) => r.id === id);
