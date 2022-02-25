@@ -4,6 +4,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   Param,
   Post,
   Put,
@@ -66,6 +67,7 @@ export class AppController {
     return data.reports[reportIndex];
   }
 
+  @HttpCode(204)
   @Delete(':id')
   deleteReport(@Param('type') type: string, @Param('id') id: string) {
     const reportToUpdate = data.reports
