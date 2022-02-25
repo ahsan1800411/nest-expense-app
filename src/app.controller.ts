@@ -52,9 +52,8 @@ export class AppController {
     const reportToUpdate = data.reports
       .filter((report) => report.type === type)
       .find((r) => r.id === id);
-    if (!reportToUpdate) {
-      return;
-    }
+    if (!reportToUpdate) return;
+
     const reportIndex = data.reports.findIndex(
       (report) => report.id === reportToUpdate.id,
     );
@@ -78,6 +77,7 @@ export class AppController {
     const reportIndex = data.reports.findIndex(
       (report) => report.id === reportToUpdate.id,
     );
+    if (reportIndex === -1) return;
     data.reports.splice(reportIndex, 1);
     return 'Deleted Successfully';
   }
